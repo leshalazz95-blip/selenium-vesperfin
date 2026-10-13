@@ -20,6 +20,10 @@ class HomePage(BasePage):
 
     HEADER = (By.CSS_SELECTOR, ".header")
     LOGO_LINK = (By.CSS_SELECTOR, ".header-logo__link")
+    SCROLL_UP_BUTTON = (By.CSS_SELECTOR, "[data-scroll-to-top]")
+    # Кнопка «вверх» рендерится динамически и не всегда есть в DOM.
+    # Стабильный селектор — обёртка с data-атрибутом; клик по ней
+    # срабатывает через делегирование событий.
 
     @allure.step("Открыть главную страницу")
     def open_page(self) -> None:
@@ -33,3 +37,8 @@ class HomePage(BasePage):
     def click_logo(self) -> None:
         """Кликает по логотипу в шапке"""
         self.click(self.LOGO_LINK)
+
+    def click_scroll_up(self) -> None:
+        """Кликает по кнопке возврата к началу страницы"""
+        self.scroll_to(self.SCROLL_UP_BUTTON)
+        self.click(self.SCROLL_UP_BUTTON)
