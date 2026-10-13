@@ -62,9 +62,9 @@ def assert_count_at_least(actual: int, minimum: int, what: str) -> None:
 def assert_in(value: str, allowed: tuple[str, ...] | list[str], what: str) -> None:
     """Проверяет, что значение содержит один из допустимых вариантов"""
     with allure.step(f"Проверка, что {what} входит в допустимый набор"):
-        assert any(item in value for item in allowed), (
-            f"{what}: значение {value!r} не соответствует ни одному из допустимых {allowed}"
-        )
+        assert any(
+            item in value for item in allowed
+        ), f"{what}: значение {value!r} не соответствует ни одному из допустимых {allowed}"
 
 
 def assert_matches(value: str, pattern: str, what: str) -> None:

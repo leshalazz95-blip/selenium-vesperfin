@@ -2,6 +2,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 from config.environments import EnvironmentConfig
 from pages.contacts_page import ContactsPage
+from pages.header import Header
 from pages.home_page import HomePage
 
 
@@ -18,6 +19,7 @@ class Application:
 
         self.home_page = HomePage(driver, env_config)
         self.contacts_page = ContactsPage(driver, env_config)
+        self.header = Header(driver, env_config)
 
         # Сюда добавляете свои страницы и сквозные компоненты, например:
         # self.courses_page = CoursesPage(driver, env_config)
